@@ -1,0 +1,77 @@
+{
+  "app_name": "T-1 AERO (Tech log)",
+  "theme": "dark_mode_only",
+  "app_type": "mobile_web_app",
+  "design_strategy": "The Performance Pro archetype. Tactical, High-Contrast, Nightshift optimized.",
+  "audience_considerations": "AMEs (Aircraft Maintenance Engineers), hangar/nightshift work, phone in pocket, dirty hands/gloves. Focus on speed, legibility, and large touch targets.",
+  "typography": {
+    "headings": "Manrope",
+    "body": "IBM Plex Sans",
+    "instructions": "Use Manrope for all screen titles, numbers, and key data points (rugged, clear). Use IBM Plex Sans for tabular logs and form labels (technical, highly legible)."
+  },
+  "colors": {
+    "background": "#0A0E17",
+    "surface": "#111827",
+    "card": "#1F2937",
+    "primary": "#FF5A1F",
+    "text_primary": "#FFFFFF",
+    "text_muted": "#9CA3AF",
+    "border": "#374151",
+    "status": {
+      "success": "#10B981",
+      "warning": "#F59E0B",
+      "danger": "#EF4444"
+    }
+  },
+  "layout": {
+    "container": "max-w-md mx-auto h-[100dvh] flex flex-col relative overflow-hidden bg-[#0A0E17] shadow-2xl border-x border-[#374151]",
+    "navigation": "Fixed bottom tab bar (h-16 to h-20) with safe area padding. Use Lucide icons.",
+    "touch_targets": "CRITICAL: h-14 (56px) minimum for all buttons and inputs to accommodate gloves and dirty hands.",
+    "spacing": "p-4 or p-6 container padding. Use generous gaps between form fields (gap-6)."
+  },
+  "screens": {
+    "Onboarding": "Full screen image background (monochrome turbine) with dark gradient overlay (`bg-gradient-to-t from-[#0A0E17] via-[#0A0E17]/80 to-transparent`). Big 'T-1 AERO' title. Disclaimer text. 'Accept & Continue' massive primary button.",
+    "Home": "Header: 'T-1 AERO'. Top section: Total Hours (North Star Metric). Action grid: 'New Entry', 'Repeat Last' (Massive buttons). Recent Entries list below.",
+    "Log_Entry": "Scrollable form. Large h-14 inputs. Use Shadcn Drawer (bottom sheet) for ATA Chapter and Aircraft Registry selection to mimic native iOS/Android pickers. Sticky bottom 'Save Entry' button. Photo attachment area.",
+    "Stats": "Tabs for (Type, ATA, Capacity). Big bold metric at top-left. Bar charts (Recharts) showing hours. High contrast grid lines.",
+    "Credentials": "Cards showing license types. Use colored left borders (green/amber/red) to indicate expiry status. Expiry countdown in days.",
+    "Settings": "List of options: Export to PDF/CSV, Dark Mode toggle, Disclaimers, Bulk Entry. Each row h-14."
+  },
+  "components": {
+    "drawer": "Use Vaul/Shadcn Drawer for all complex selects to avoid modal popups on mobile. This gives a native feel.",
+    "cards": "Flat background, 1px border border-white/10. No drop shadows. Sharp or slightly rounded (rounded-xl).",
+    "buttons": "Pill-shaped (rounded-full). Active states scale down to 0.95. High contrast text.",
+    "inputs": "bg-[#0A0E17] border-[#374151] rounded-xl text-white px-4 h-14 text-lg. Floating labels or uppercase overlines."
+  },
+  "images": [
+    {
+      "url": "https://images.pexels.com/photos/36095631/pexels-photo-36095631.jpeg",
+      "description": "Monochrome airplane turbine",
+      "usage": "Onboarding splash screen background"
+    },
+    {
+      "url": "https://images.unsplash.com/photo-1547312667-da746e5a78c7?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTV8MHwxfHNlYXJjaHwxfHxhaXJwb3J0JTIwaGFuZ2FyJTIwbmlnaHR8ZW58MHx8fHwxNzgyMzEwMTY4fDA&ixlib=rb-4.1.0&q=85",
+      "description": "Airport hangar night",
+      "usage": "Empty state background or Stats header"
+    }
+  ],
+  "instructions_to_main_agent": [
+    "Simulate a native mobile app layout: use a main wrapper with `max-w-md mx-auto h-[100dvh] flex flex-col relative overflow-hidden bg-[#0A0E17]`.",
+    "Build standard React JS web app, NOT React Native. The environment is web.",
+    "Implement bottom navigation with 5 tabs (Home, Entries, Stats, Credentials, Settings) using lucide-react icons.",
+    "Do NOT use standard HTML `<select>`. Use Shadcn Drawer for native-like bottom sheet pickers.",
+    "Ensure all buttons and inputs have `min-h-[56px]` to comply with the 'dirty hands / gloves' requirement.",
+    "Add `data-testid` to all form inputs, buttons, and list items.",
+    "Use sonner for success/error toasts (e.g., 'Entry saved in 4s')."
+  ],
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": "Never use generic centered layouts. Use dark mode exclusively. Create depth through 1px borders, not soft shadows. Add micro-animations for touch feedback (`active:scale-95`). No emoji icons. Maintain aviation/technical aesthetic.",
+  "packages_to_install": [
+    "lucide-react",
+    "recharts",
+    "date-fns",
+    "sonner",
+    "vaul",
+    "clsx",
+    "tailwind-merge"
+  ]
+}
