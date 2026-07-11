@@ -220,10 +220,14 @@ function Row({
     <Component
       testID={testID}
       onPress={onPress}
-      style={({ pressed }: { pressed?: boolean }) => [
-        styles.rowInner,
-        isPressable && pressed ? { backgroundColor: colors.card } : null,
-      ]}
+      style={
+        isPressable
+          ? ({ pressed }: { pressed: boolean }) => [
+              styles.rowInner,
+              pressed ? { backgroundColor: colors.card } : null,
+            ]
+          : styles.rowInner
+      }
     >
       <View style={[styles.rowIcon, destructive ? { backgroundColor: "rgba(239,68,68,0.14)" } : null]}>
         <Ionicons name={icon} size={18} color={destructive ? colors.danger : colors.text} />
